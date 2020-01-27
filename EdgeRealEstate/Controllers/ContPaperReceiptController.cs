@@ -68,14 +68,14 @@ namespace EdgeRealEstate.Controllers
                     var types = Request["Types"];
                     if (types=="1")
                     {
-                        ContPaperReceipts.refType = "1";
+                        ContPaperReceipts.refType = 4;
                         //ContPaperReceipts.Project_id = 0;
                         db.ContPaperReceipts.Add(ContPaperReceipts);
                         db.SaveChanges();
                     }
                     else if(types=="2")
                     {
-                        ContPaperReceipts.refType = "2";
+                        ContPaperReceipts.refType = 5;
                         db.ContPaperReceipts.Add(ContPaperReceipts);
                         try
                         {
@@ -85,7 +85,7 @@ namespace EdgeRealEstate.Controllers
                         { }
                         ContPaperPayments.ContributorId = ContPaperReceipts.ContributorId;
                         ContPaperPayments.paid = ContPaperReceipts.paid;
-                        ContPaperPayments.refType = "3";
+                        ContPaperPayments.refType = 3;
                         ContPaperPayments.indate = ContPaperReceipts.indate;
                         ContPaperPayments.empId = ContPaperReceipts.empId;
                         ContPaperPayments.salesManId = ContPaperReceipts.salesManId;
@@ -104,7 +104,7 @@ namespace EdgeRealEstate.Controllers
                     }
                     else if (types == "3")
                     {
-                        ContPaperReceipts.refType = "3";
+                        ContPaperReceipts.refType = 6;
                        // ContPaperReceipts.Project_id = 0;
                         db.ContPaperReceipts.Add(ContPaperReceipts);
                         db.SaveChanges();
@@ -121,7 +121,7 @@ namespace EdgeRealEstate.Controllers
                     }
                     else if (types == "4")
                     {
-                        ContPaperReceipts.refType = "4";
+                        ContPaperReceipts.refType = 7;
                         db.ContPaperReceipts.Add(ContPaperReceipts);
                         try
                         {
@@ -131,7 +131,7 @@ namespace EdgeRealEstate.Controllers
                         { }
                         ContPaperPayments.ContributorId = ContPaperReceipts.ContributorId;
                         ContPaperPayments.paid = ContPaperReceipts.paid;
-                        ContPaperPayments.refType = "2";
+                        ContPaperPayments.refType = 2;
                         ContPaperPayments.indate = ContPaperReceipts.indate;
                         ContPaperPayments.empId = ContPaperReceipts.empId;
                         ContPaperPayments.salesManId = ContPaperReceipts.salesManId;

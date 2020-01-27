@@ -23,7 +23,8 @@ namespace EdgeRealEstate.Entities
 
         public int CustomerPaiedId { get; set; }
         [DisplayName(" المبلغ")]
-        public int CostMony { get; set; }
+        public decimal CostMony { get; set; }
+        public decimal Vat { get; set; }
         //************Relation******
         public Flat Flat { get; set; }
         public Customer Customer { get; set; }
