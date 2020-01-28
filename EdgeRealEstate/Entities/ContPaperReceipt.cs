@@ -14,8 +14,7 @@ namespace EdgeRealEstate.Entities
         public int ContributorId { get; set; }
         public decimal paid { get; set; }
         public string notes { get; set; }
-
-        public int refType { get; set; }
+        public string refType { get; set; }
         public int refID { get; set; }
         public string paidMethod { get; set; }
         public string ContPaperReceiptType { get; set; }
@@ -36,9 +35,5 @@ namespace EdgeRealEstate.Entities
         [ForeignKey("Project")]
         public int? ProjectId { get; set; }
         public virtual Projects Project { get; set; }
-
-      
-        
- 
     }
 }

@@ -18,6 +18,7 @@ namespace EdgeRealEstate.Controllers
         {
             ViewBag.Projects = new SelectList(db.Projectes, "id", "Aname");
 
+            ViewBag.FlatType = new SelectList(db.Flats, "id", "Aname");
             return View();
         }
 

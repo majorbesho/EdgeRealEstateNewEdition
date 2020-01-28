@@ -53,15 +53,15 @@ namespace EdgeRealEstate.Controllers
         }
 
         // GET: CustomerSelectFlats/Create
-        public ActionResult Create(int? custId)
+        public ActionResult Create(int? Id)
         {
            // GetAllCustomerPayment(custId);
 
             ViewBag.Customer = new SelectList(db.Customers, "Id", "ARName");
-            var AllPayment = db.CustPaperPayments.Where(a => a.customerId == custId).Sum(x => x.paid);
+            var AllPayment = db.CustPaperPayments.Where(a => a.customerId == Id).Sum(x => x.paid);
             ViewBag.AllPayment = new SelectList(db.Customers, "Id", "ARName");
             //ViewBag.Customer = new SelectList(db.Customers, "Id", "ARName");
-            ViewBag.FlatId = new SelectList(db.Flats, "id", "Aname");
+            ViewBag.FlatId = new SelectList(db.Flats, "id", "Aname",Id);
             return View();
         }
 
@@ -78,9 +78,7 @@ namespace EdgeRealEstate.Controllers
                 
                 await db.SaveChangesAsync();
                 Flat flat = db.Flats.Where(a => a.id == customerSelectFlat.FlatId).SingleOrDefault();
-                flat.FlatTypeId = 2;
-
-                db.Entry(db.Flats).State = EntityState.Modified;
+                flat.FlatTypeId = 5;
                 db.SaveChanges();
 
                 return RedirectToAction("Index");

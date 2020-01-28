@@ -211,7 +211,6 @@
     <Compile Include="Controllers\ContractorPaperPaymentReportController.cs" />
     <Compile Include="Controllers\contractorPaperReceiptController.cs" />
     <Compile Include="Controllers\ContractorPaperReceiptReportController.cs" />
-    <Compile Include="Controllers\ContributerMoveReportController.cs" />
     <Compile Include="Controllers\ContributerPaymentForProjectsController.cs" />
     <Compile Include="Controllers\ContributorsController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -305,7 +304,6 @@
     <Compile Include="Entities\LKCountry.cs" />
     <Compile Include="Entities\LKNationality.cs" />
     <Compile Include="Entities\LKPaymentMethod.cs" />
-    <Compile Include="Entities\LKRefTypes.cs" />
     <Compile Include="Entities\LKStore.cs" />
     <Compile Include="Entities\LKTitle.cs" />
     <Compile Include="Entities\MainItemDetail.cs" />
@@ -348,73 +346,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001200813293_allaftermirg.cs" />
-    <Compile Include="Migrations\202001200813293_allaftermirg.designer.cs">
-      <DependentUpon>202001200813293_allaftermirg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001201301245_addDateCOstInCustomeSelectFlat.cs" />
-    <Compile Include="Migrations\202001201301245_addDateCOstInCustomeSelectFlat.designer.cs">
-      <DependentUpon>202001201301245_addDateCOstInCustomeSelectFlat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001211324370_xxx.cs" />
-    <Compile Include="Migrations\202001211324370_xxx.designer.cs">
-      <DependentUpon>202001211324370_xxx.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001211528430_testcity.cs" />
-    <Compile Include="Migrations\202001211528430_testcity.designer.cs">
-      <DependentUpon>202001211528430_testcity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001211536431_testcity2.cs" />
-    <Compile Include="Migrations\202001211536431_testcity2.designer.cs">
-      <DependentUpon>202001211536431_testcity2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001220905555_miargRasha.cs" />
-    <Compile Include="Migrations\202001220905555_miargRasha.designer.cs">
-      <DependentUpon>202001220905555_miargRasha.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001221344303_stage.cs" />
-    <Compile Include="Migrations\202001221344303_stage.designer.cs">
-      <DependentUpon>202001221344303_stage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001250858189_forbegin.cs" />
-    <Compile Include="Migrations\202001250858189_forbegin.designer.cs">
-      <DependentUpon>202001250858189_forbegin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001251147108_afterLocal.cs" />
-    <Compile Include="Migrations\202001251147108_afterLocal.designer.cs">
-      <DependentUpon>202001251147108_afterLocal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001261117153_addvat.cs" />
-    <Compile Include="Migrations\202001261117153_addvat.designer.cs">
-      <DependentUpon>202001261117153_addvat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001261123097_adddesforMoney.cs" />
-    <Compile Include="Migrations\202001261123097_adddesforMoney.designer.cs">
-      <DependentUpon>202001261123097_adddesforMoney.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001261205056_addRefTypes.cs" />
-    <Compile Include="Migrations\202001261205056_addRefTypes.designer.cs">
-      <DependentUpon>202001261205056_addRefTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001261213136_addRefTypes1.cs" />
-    <Compile Include="Migrations\202001261213136_addRefTypes1.designer.cs">
-      <DependentUpon>202001261213136_addRefTypes1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001261921577_relationconpaper.cs" />
-    <Compile Include="Migrations\202001261921577_relationconpaper.designer.cs">
-      <DependentUpon>202001261921577_relationconpaper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001261934004_conpaper.cs" />
-    <Compile Include="Migrations\202001261934004_conpaper.designer.cs">
-      <DependentUpon>202001261934004_conpaper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001261956374_conpaper1.cs" />
-    <Compile Include="Migrations\202001261956374_conpaper1.designer.cs">
-      <DependentUpon>202001261956374_conpaper1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001270729366_addrelation.cs" />
-    <Compile Include="Migrations\202001270729366_addrelation.designer.cs">
-      <DependentUpon>202001270729366_addrelation.cs</DependentUpon>
+    <Compile Include="Migrations\202001270942073_addVet.cs" />
+    <Compile Include="Migrations\202001270942073_addVet.designer.cs">
+      <DependentUpon>202001270942073_addVet.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -428,7 +362,6 @@
     <Compile Include="Models\Services\ContPaperReceiptReportService.cs" />
     <Compile Include="Models\Services\ContractorPaperPaymentReportService.cs" />
     <Compile Include="Models\Services\ContractorPaperReceiptReportService.cs" />
-    <Compile Include="Models\Services\ContributerMoveReportService.cs" />
     <Compile Include="Models\Services\CustomerSelectFlatReportService.cs" />
     <Compile Include="Models\Services\CustPaperPaymentReportService.cs" />
     <Compile Include="Models\Services\CustPaperReceiptReportService.cs" />
@@ -455,7 +388,6 @@
     <Compile Include="Models\ViewModels\contractorPaperPaymentViewModel.cs" />
     <Compile Include="Models\ViewModels\contractorPaperReceiptViewModel.cs" />
     <Compile Include="Models\ViewModels\contractorViewModel.cs" />
-    <Compile Include="Models\ViewModels\ContributerMoveViewModel.cs" />
     <Compile Include="Models\ViewModels\ContributerPaymentForProjectVM.cs" />
     <Compile Include="Models\ViewModels\CustomerSelectFlatViewModel.cs" />
     <Compile Include="Models\ViewModels\CustomerViewModel.cs" />
@@ -3924,7 +3856,6 @@
     <Content Include="Views\CustomerSelectFlatReport\Index2.cshtml" />
     <Content Include="Views\CustomerSelectFlatReport\Index___.cshtml" />
     <Content Include="Views\ProjectsFlatReport\Index.cshtml" />
-    <Content Include="Views\ContributerMoveReport\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Debug\TempPE\" />
@@ -3960,56 +3891,8 @@
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001200813293_allaftermirg.resx">
-      <DependentUpon>202001200813293_allaftermirg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001201301245_addDateCOstInCustomeSelectFlat.resx">
-      <DependentUpon>202001201301245_addDateCOstInCustomeSelectFlat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001211324370_xxx.resx">
-      <DependentUpon>202001211324370_xxx.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001211528430_testcity.resx">
-      <DependentUpon>202001211528430_testcity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001211536431_testcity2.resx">
-      <DependentUpon>202001211536431_testcity2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001220905555_miargRasha.resx">
-      <DependentUpon>202001220905555_miargRasha.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001221344303_stage.resx">
-      <DependentUpon>202001221344303_stage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001250858189_forbegin.resx">
-      <DependentUpon>202001250858189_forbegin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001251147108_afterLocal.resx">
-      <DependentUpon>202001251147108_afterLocal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001261117153_addvat.resx">
-      <DependentUpon>202001261117153_addvat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001261123097_adddesforMoney.resx">
-      <DependentUpon>202001261123097_adddesforMoney.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001261205056_addRefTypes.resx">
-      <DependentUpon>202001261205056_addRefTypes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001261213136_addRefTypes1.resx">
-      <DependentUpon>202001261213136_addRefTypes1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001261921577_relationconpaper.resx">
-      <DependentUpon>202001261921577_relationconpaper.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001261934004_conpaper.resx">
-      <DependentUpon>202001261934004_conpaper.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001261956374_conpaper1.resx">
-      <DependentUpon>202001261956374_conpaper1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001270729366_addrelation.resx">
-      <DependentUpon>202001270729366_addrelation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001270942073_addVet.resx">
+      <DependentUpon>202001270942073_addVet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ContPaperPaymentReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EdgeRealEstate.Entities;
+using Kendo.Mvc.Extensions;
 
 namespace EdgeRealEstate.Controllers
 {
@@ -99,7 +100,7 @@ namespace EdgeRealEstate.Controllers
         public JsonResult GetProjectByMainProjectId(int? id)
         {
 
-            var Projects = db.Projectes.Where(a => a.MainProjectId == id).ToList();
+            var Projects = db.Projectes.Where(a => a.MainProjectId == id ).ToList();
 
             if (Projects == null)
             {
@@ -116,30 +117,31 @@ namespace EdgeRealEstate.Controllers
         {
             //  all type   0  1 2 
 
-            var Flat = db.Flats.Include("Building").ToList();
+            var Flat = db.Flats.Include("Building").Include("Projects.MainProject").Where(a=>a.FlatTypeId==3).ToList();
             if (id != null)
             {
-                Flat.Where(a => a.ProjectsId == id).ToList();
+               
+                Flat = Flat.Where(a => a.ProjectsId == id).ToList();
             }
             if (mainProjectId != null)
             {
-                Flat.Where(a => a.Projects.MainProjectId == mainProjectId);
+                Flat = Flat.Where(a => a.Projects?.MainProjectId == mainProjectId ).ToList();
             }
             if (Flat == null)
             {
                 Flat = new List<Flat>();
             }
-            return Json(Flat.Select(a => new { a.id, a.Aname, a.code, a.Level, a.BuildingId, BuildingCode = a.Building?.Code, a.FlotSize, a.BedroomNo, a.DegreeOfExcellence, a.EndDateExpected }), JsonRequestBehavior.AllowGet);
+            return Json(Flat.Select(a => new { a.id, a.Aname, a.code, a.Level, a.BuildingId, BuildingCode = a.Building?.Code, a.FlotSize, a.BedroomNo, a.DegreeOfExcellence, a.EndDateExpected ,a.FlatTypeId}), JsonRequestBehavior.AllowGet);
         }
 
         //ContractCustomerFlat/GetFlatByProjectId/5
         public JsonResult GetFlat()
         {
             //  all type   0  1 2 
-            var Flat = db.Flats.Include("Building");
+            var Flat = db.Flats.Include("Building").Where(a=>a.FlatTypeId==3);
             var x = Flat.ToList();
 
-            return Json(Flat.Select(a => new { a.id, a.Aname, a.code, a.Level, a.BuildingId, BuildingCode = a.Building.Code, a.FlotSize, a.BedroomNo, a.DegreeOfExcellence, a.EndDateExpected }), JsonRequestBehavior.AllowGet);
+            return Json(Flat.Select(a => new { a.id, a.Aname, a.code, a.Level, a.BuildingId, BuildingCode = a.Building.Code, a.FlotSize, a.BedroomNo, a.DegreeOfExcellence, a.EndDateExpected,a.FlatTypeId }), JsonRequestBehavior.AllowGet);
         }
 
         // GET: ContractCustomerFlat/Details/5
