@@ -346,9 +346,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001270942073_addVet.cs" />
-    <Compile Include="Migrations\202001270942073_addVet.designer.cs">
-      <DependentUpon>202001270942073_addVet.cs</DependentUpon>
+    <Compile Include="Migrations\202001291336268_xx.cs" />
+    <Compile Include="Migrations\202001291336268_xx.designer.cs">
+      <DependentUpon>202001291336268_xx.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -484,6 +484,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\EdgeRealEstateDB.mdf" />
+    <Content Include="App_Data\EdgeRealEstateDB_log.ldf">
+      <DependentUpon>EdgeRealEstateDB.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\uploads\path.txt" />
     <Content Include="bin\EdgeRealEstate.dll" />
     <Content Include="bin\EdgeRealEstate.pdb" />
@@ -3891,8 +3895,8 @@
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001270942073_addVet.resx">
-      <DependentUpon>202001270942073_addVet.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001291336268_xx.resx">
+      <DependentUpon>202001291336268_xx.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ContPaperPaymentReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

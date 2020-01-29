@@ -6,3 +6,4 @@
 /.vs/EdgeRealEstate/v16/Server/sqlite3/storage.ide-shm
 /.vs/EdgeRealEstate/v16/Server/sqlite3/storage.ide
 /.vs/EdgeRealEstate/v16/Server/sqlite3/db.lock
+*.suo

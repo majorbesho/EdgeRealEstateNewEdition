@@ -14,8 +14,6 @@ namespace EdgeRealEstate.Controllers
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
-
-
         // GET: ContractCustomerFlat
         public ActionResult Index()
         {
