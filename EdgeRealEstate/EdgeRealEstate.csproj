@@ -211,6 +211,7 @@
     <Compile Include="Controllers\ContractorPaperPaymentReportController.cs" />
     <Compile Include="Controllers\contractorPaperReceiptController.cs" />
     <Compile Include="Controllers\ContractorPaperReceiptReportController.cs" />
+    <Compile Include="Controllers\ContributerMoveReportController.cs" />
     <Compile Include="Controllers\ContributerPaymentForProjectsController.cs" />
     <Compile Include="Controllers\ContributorsController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -402,6 +403,7 @@
     <Compile Include="Models\Services\ContPaperReceiptReportService.cs" />
     <Compile Include="Models\Services\ContractorPaperPaymentReportService.cs" />
     <Compile Include="Models\Services\ContractorPaperReceiptReportService.cs" />
+    <Compile Include="Models\Services\ContributerMoveReportService.cs" />
     <Compile Include="Models\Services\CustomerSelectFlatReportService.cs" />
     <Compile Include="Models\Services\CustPaperPaymentReportService.cs" />
     <Compile Include="Models\Services\CustPaperReceiptReportService.cs" />
@@ -428,6 +430,7 @@
     <Compile Include="Models\ViewModels\contractorPaperPaymentViewModel.cs" />
     <Compile Include="Models\ViewModels\contractorPaperReceiptViewModel.cs" />
     <Compile Include="Models\ViewModels\contractorViewModel.cs" />
+    <Compile Include="Models\ViewModels\ContributerMoveViewModel.cs" />
     <Compile Include="Models\ViewModels\ContributerPaymentForProjectVM.cs" />
     <Compile Include="Models\ViewModels\CustomerSelectFlatViewModel.cs" />
     <Compile Include="Models\ViewModels\CustomerViewModel.cs" />
