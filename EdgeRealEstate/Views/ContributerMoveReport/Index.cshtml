@@ -19,21 +19,21 @@
 
                 <div class="form-group" dir="rtl">
 
-                    <div class="col-md-6" dir="rtl">
-                        <div class="col-md-5">
-                            @Html.DropDownList("ToContributerID", (IEnumerable<SelectListItem>)ViewBag.ContributerTo, null, new { @id = "ToContributerID", @class = "form-control" })
-                        </div>
-                        @Html.Label("toPro", "الى ", htmlAttributes: new { @class = "control-label col-md-1" })
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="col-md-5">
+
+                    <div class="col-md-12">
+                        <div class="col-md-10">
                             @Html.DropDownList("FContributerID", (IEnumerable<SelectListItem>)ViewBag.ContributerFrom, null, new { @id = "FContributerID", @class = "form-control" })
                         </div>
                         @Html.Label("FromPro", "من ", htmlAttributes: new { @class = "control-label col-md-1" })
                     </div>
                 </div>
-
+                <div class="col-md-6" dir="rtl" style="display:none">
+                    <div class="col-md-5">
+                        @Html.DropDownList("ToContributerID", (IEnumerable<SelectListItem>)ViewBag.ContributerTo, null, new { @id = "ToContributerID", @class = "form-control" })
+                    </div>
+                    @Html.Label("toPro", "الى ", htmlAttributes: new { @class = "control-label col-md-1" })
+                </div>
                 <div class="form-group bmd-form-group" dir="rtl">
                     <div class="col-md-6">
                         <input type="submit" class="btn btn-primary fa fa-print" value="عرض" style="text-align:center;color: white;cursor: pointer;" />
@@ -52,14 +52,50 @@
         @foreach (var group in Model.GroupBy(m => m.ContributorName))
         {
             <div id="@group.Key" @*class="tabmenucontent table-responsive"*@>
+                <div>
+                    <table class="table" dir="rtl" width="70%" style="font-weight:bold; font-size:medium">
+                        <tr>
+                            <td style="font-weight:bold; font-size:medium">
+                                المساهم
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => @group.Key)
+                            </td>
+                            <td>
+                            </td>
 
+                        </tr>
+                        <tr>
+                            <td>
+                                رصيد الصكوك
+                            </td>
+                            <td>
+                                @ViewBag.C
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                رصيد المبالغ
+                            </td>
+                            <td>
+                                @ViewBag.d
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
                 <table class="table" dir="rtl">
+              
+                    @*total : @ViewBag.C
+                    total @ViewBag.d*@
+
                     <thead style="background-color:#ccc; text-align-last:center" dir="rtl">
                         <tr dir="rtl">
 
-                            <th>
-                                @*@Html.DisplayNameFor(model => model.ContributorName)*@
-                            </th>
+                            
                             @*<th>
                     @Html.DisplayNameFor(model => model.refTypeCredit)
                 </th>*@
@@ -80,15 +116,14 @@
 
                     </thead>
                     <tbody style="text-align-last:center" dir="rtl">
-                        @Html.DisplayFor(modelItem => @group.Key)
+
+                   
                         @foreach (var item in group)
                         {
 
                             <tr>
 
-                                <td>
-                                    @*@Html.DisplayFor(modelItem => item.ContributorName)*@
-                                </td>
+                              
                                 @*<td>
                         @Html.DisplayFor(modelItem => item.refTypeCredit)
                     </td>*@
@@ -108,18 +143,19 @@
                             </tr>
 
                         }
+
                     </tbody>
 
                     @*<tfoot style="text-align-last: center">
-                        <tr>
-                            <td> </td>
-                            <td> الاجمالي</td>
-                            <td> </td>
-                            <td>@Model.Sum(i => i.paidCredit)</td>
+            <tr>
+                <td> </td>
+                <td> الاجمالي</td>
+                <td> </td>
+                <td>@Model.Sum(i => i.paidCredit)</td>
 
-                         
-                        </tr>
-                    </tfoot>*@
+
+            </tr>
+        </tfoot>*@
 
                 </table>
 

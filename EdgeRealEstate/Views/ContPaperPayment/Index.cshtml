@@ -62,16 +62,16 @@
                 @Html.DisplayFor(modelItem => item.paidMethod)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.paid)
+                @Html.DisplayFor(modelItem => item.Dbtpaid)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.refType)
+                @Html.DisplayFor(modelItem => item.DbtrefType)
             </td>
             <td>
-                @item.indate.ToShortDateString()
+                @item.Dbtindate.ToShortDateString()
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.notes)
+                @Html.DisplayFor(modelItem => item.Dbtnotes)
             </td>
             <td>
                 <a href="@Url.Action("Edit", "ContPaperPayment", new { id = item.id })" class="btn btn-success">

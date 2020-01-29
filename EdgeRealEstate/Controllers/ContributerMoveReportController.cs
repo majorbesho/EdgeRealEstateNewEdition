@@ -83,7 +83,8 @@ namespace EdgeRealEstate.Controllers
                                                            indateCredit = dbt.Dbtindate,
                                                            paidCredit = dbt.Dbtpaid*(-1),
                                                            RefnameCredit = dbt.RefType.Aname,
-                                                            refTypeCreditID = dbt.id
+                                                            refTypeCreditID = dbt.id//,
+                                                      
 
                                                         }).OrderBy(x => x.refTypeCreditID).ToList().Select(x => new ContributerMoveViewModel
                                                         {
@@ -92,10 +93,64 @@ namespace EdgeRealEstate.Controllers
                                                             indateCredit = x.indateCredit,
                                                             paidCredit = x.paidCredit,
                                                             RefnameCredit = x.RefnameCredit,
-                                                            refTypeCreditID = x.refTypeCreditID
+                                                            refTypeCreditID = x.refTypeCreditID//,
+                                                     
 
                                                         }).OrderBy(x=>x.ContributorId).ThenBy(x=>x.indateCredit).ThenBy(x=>x.refTypeCreditID).ToList();
 
+
+            //var TotalCredit4 = (from TotalC in db.ContPaperReceipts
+            //                    where TotalC.id == FromContributerID
+            //                     && TotalC.CrdrefType == 4
+
+            //                    group TotalC by new { TotalC.id } into purchasegroup
+            //                    select new
+            //                    {
+            //                        totalc4 = purchasegroup.Sum(s => s.Crdpaid)
+            //                    });
+
+            var TotalCredit4 = (from TotalC in db.ContPaperReceipts
+
+                                where TotalC.ContributorId == FromContributerID
+                                //  && TotalC.id <= ToContributerID
+                                && TotalC.CrdrefType == 4
+                                select TotalC.Crdpaid).DefaultIfEmpty().Sum();
+            var TotalCredit5 = (from TotalC in db.ContPaperReceipts
+                                
+                                where TotalC.ContributorId == FromContributerID
+                              //  && TotalC.id <= ToContributerID
+                                && TotalC.CrdrefType == 5
+                               select TotalC.Crdpaid).DefaultIfEmpty().Sum();
+
+            var TotalCredit6 = (from TotalC in db.ContPaperReceipts
+                                where TotalC.ContributorId == FromContributerID
+                                 //  && TotalC.id <= ToContributerID
+                                 && TotalC.CrdrefType == 6
+                                select TotalC.Crdpaid).DefaultIfEmpty().Sum();
+
+            var TotalCredit7 = (from TotalC in db.ContPaperReceipts
+                                where TotalC.ContributorId == FromContributerID
+                                 //  && TotalC.id <= ToContributerID
+                                 && TotalC.CrdrefType == 7
+                                select TotalC.Crdpaid).DefaultIfEmpty().Sum();
+
+            var ToTalD1 = (from TotalC in db.ContPaperPayments
+                           where TotalC.ContributorId == FromContributerID
+                               //  && TotalC.id <= ToContributerID
+                               && TotalC.DbtrefType == 1
+                           select TotalC.Dbtpaid).DefaultIfEmpty().Sum();
+
+            var ToTalD2 = (from TotalC in db.ContPaperPayments
+                           where TotalC.ContributorId == FromContributerID
+                               //  && TotalC.id <= ToContributerID
+                               && TotalC.DbtrefType == 2
+                           select TotalC.Dbtpaid).DefaultIfEmpty().Sum();
+
+            var ToTalD3 = (from TotalC in db.ContPaperPayments
+                                            where TotalC.ContributorId == FromContributerID
+                                              //  && TotalC.id <= ToContributerID
+                                                && TotalC.DbtrefType == 3
+                                               select TotalC.Dbtpaid).DefaultIfEmpty().Sum();
 
 
 
@@ -127,7 +182,9 @@ namespace EdgeRealEstate.Controllers
             //                  SoledFlat = x.SoledFlat
             //              }).ToList();
             #endregion
-
+            ViewBag.C =TotalCredit4 - ToTalD2;
+            ViewBag.d = TotalCredit4 + TotalCredit6 + TotalCredit7 - ToTalD1 - ToTalD3;
+      
             return View(ResultReceipt.ToList());
         }
         protected override void Dispose(bool disposing)
