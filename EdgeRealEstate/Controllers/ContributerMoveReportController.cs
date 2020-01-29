@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using EdgeRealEstate.Models;
 using EdgeRealEstate.Models.ViewModels;
 using EdgeRealEstate.Models.Services;
+using System.Dynamic;
 
 namespace EdgeRealEstate.Controllers
 {
@@ -20,60 +21,88 @@ namespace EdgeRealEstate.Controllers
         // GET: ContributerMoveReport
      
 
-        public ActionResult Index(int? ContributerID)
+        public ActionResult Index(int? FContributerID, int? ToContributerID)
         {
-            ViewBag.Contributer = new SelectList(db.Contributor, "Id", "Aname");
-          //  ViewBag.ProjectsTo = new SelectList(db.Projectes, "Id", "Aname");
-            var FromContributerID = ContributerID;
-            //var ToPro = ToProID;
+            ViewBag.ContributerFrom = new SelectList(db.Contributor, "Id", "ARName");
+            ViewBag.ContributerTo = new SelectList(db.Contributor, "Id", "ARName");
+            var FromContributerID = FContributerID;
+            var ToToContributerID = ToContributerID;
             if (FromContributerID == null)
             {
                 FromContributerID = db.Contributor.Select(c => c.id).First();
             }
-            //if (ToPro == null)
-            //{
-            //    ToPro = db.Projectes.OrderByDescending(c => c.id).First().id;
-            //}
+            if (ToContributerID == null)
+            {
+                ToContributerID = db.Contributor.Select(c => c.id).First();//db.Contributor.OrderByDescending(c => c.id).First().id;
+            }
+            #region
+
             //var FromPro = db.Projectes.Select(c => c.id).First();
 
-           var result = (from i in db.Contributor
-                      join crd in db.ContPaperReceipts.DefaultIfEmpty() on i.id equals crd.ContributorId
-                      join dbt in db.ContPaperPayments.DefaultIfEmpty() on i.id equals dbt.ContributorId
 
-                      //SELECT dbo.Contributors.ARName, dbo.ContPaperReceipts.paid AS credit, dbo.ContPaperReceipts.refType AS credittype, dbo.ContPaperReceipts.indate, dbo.ContPaperPayments.paid AS debit, dbo.ContPaperPayments.refType AS Expr1,
-                      //                          dbo.ContPaperPayments.indate AS Expr2
+            //var result= (from crd in db.ContPaperReceipts 
+            //             join i in db.Contributor on crd.ContributorId equals i.id
 
-                      where i.id == FromContributerID
-                      &&
-                      i.IsDeleted == false
-                      select new 
-                      {
-                          ContributorId = i.id,
-                          ContributorName = i.ARName,
-                          //refTypeCredit =()
-                          //RefnameCredit = crd.LK,
+            //             where i.IsDeleted== false && i.id==FromContributerID
+            //             select new 
+            //             {
+            //                 ContributorId = i.id,
+            //                 ContributorName = i.ARName,
+            //                 indateCredit = crd.indate,
+            //                 paidCredit = crd.paid,
+            //                 RefnameCredit = crd.RefType.Aname,
 
-                          indateCredit = crd.indate,
-                           paidCredit = crd.paid,
-                          RefnameDebit = dbt.RefType.Aname,
-                          indateDebit = dbt.indate,
-                          paidDebit = dbt.paid
-                          //TotalCredit 
-                          //TotalDebit 
-                      }).ToList().Select(x=> new ContributerMoveViewModel
-                      {
-                          ContributorId= x.ContributorId,
-                          ContributorName = x.ContributorName,
-                         // RefnameCredit = x.RefnameCredit,
-                          indateCredit = x.indateCredit,
-                         paidCredit =x.paidCredit,
-                          RefnameDebit = x.RefnameDebit,
-                          indateDebit= x.indateDebit,
-                          paidDebit = x.paidDebit
-                      }).ToList();
+            //             }).Union(from dbt in db.ContPaperPayments 
+            //                      join i in db.Contributor on )
+            #endregion
+
+            var ResultReceipt = (from i in db.Contributor
+                          join crd in db.ContPaperReceipts on i.id equals crd.ContributorId
+                           
+                          //join dbt in db.ContPaperPayments on i.id equals dbt.ContributorId
+                          where i.id >= FromContributerID && i.id<= ToContributerID
+                          &&  i.IsDeleted == false
+                          select new
+                          {
+                              ContributorId = i.id,
+                              ContributorName = i.ARName,
+                              indateCredit = crd.Crdindate,
+                              paidCredit = crd.Crdpaid,
+                              RefnameCredit = crd.RefType.Aname,
+                              refTypeCreditID = crd.id
+                          }).OrderBy(x=>x.refTypeCreditID).Union (from i in db.Contributor
+                                                       // join crd in db.ContPaperReceipts on i.id equals crd.ContributorId
+                                                        join dbt in db.ContPaperPayments on i.id equals dbt.ContributorId
+                                                                  where i.id >= FromContributerID && i.id <= ToContributerID
+                                                                  &&
+                                                        i.IsDeleted == false
+                                                        select new
+                                                        {
+                                                            ContributorId = i.id,
+                                                           ContributorName = i.ARName,
+                                                           indateCredit = dbt.Dbtindate,
+                                                           paidCredit = dbt.Dbtpaid*(-1),
+                                                           RefnameCredit = dbt.RefType.Aname,
+                                                            refTypeCreditID = dbt.id
+
+                                                        }).OrderBy(x => x.refTypeCreditID).ToList().Select(x => new ContributerMoveViewModel
+                                                        {
+                                                            ContributorId = x.ContributorId,
+                                                            ContributorName =x.ContributorName,
+                                                            indateCredit = x.indateCredit,
+                                                            paidCredit = x.paidCredit,
+                                                            RefnameCredit = x.RefnameCredit,
+                                                            refTypeCreditID = x.refTypeCreditID
+
+                                                        }).OrderBy(x=>x.ContributorId).ThenBy(x=>x.indateCredit).ThenBy(x=>x.refTypeCreditID).ToList();
 
 
 
+
+
+            #region
+            //List<ContributerMoveViewModel> contributerMoveViewModels = new List<ContributerMoveViewModel>();
+            //contributerMoveViewModels = conterPaperReceiptViewModels.Concat(conterPaperPaymentViewModels).ToList();
             //var result = (from i in db.Projectes
             //              where i.id <= FromPro && i.id >= ToPro
             //              select new
@@ -97,8 +126,9 @@ namespace EdgeRealEstate.Controllers
             //                  ReadyFlat = x.ReadyFlat,
             //                  SoledFlat = x.SoledFlat
             //              }).ToList();
-      
-            return View(result.ToList());
+            #endregion
+
+            return View(ResultReceipt.ToList());
         }
         protected override void Dispose(bool disposing)
         {

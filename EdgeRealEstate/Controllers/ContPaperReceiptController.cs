@@ -65,17 +65,18 @@ namespace EdgeRealEstate.Controllers
                     //ViewBag.SalesMans = new SelectList(db.Employees, "Id", "ARName");
                     //ViewBag.Projects = new SelectList(db.Projectes, "Id", "Aname");
                     ContPaperReceipts.isDeleted = false;
+                    ContPaperReceipts.Crdindate = (DateTime)ContPaperReceipts.Crdindate;
                     var types = Request["Types"];
                     if (types=="1")
                     {
-                        ContPaperReceipts.refType = "1";
+                        ContPaperReceipts.CrdrefType = 4;
                         //ContPaperReceipts.Project_id = 0;
                         db.ContPaperReceipts.Add(ContPaperReceipts);
                         db.SaveChanges();
                     }
                     else if(types=="2")
                     {
-                        ContPaperReceipts.refType = "2";
+                        ContPaperReceipts.CrdrefType = 5;
                         db.ContPaperReceipts.Add(ContPaperReceipts);
                         try
                         {
@@ -84,9 +85,9 @@ namespace EdgeRealEstate.Controllers
                         catch (Exception eex)
                         { }
                         ContPaperPayments.ContributorId = ContPaperReceipts.ContributorId;
-                        ContPaperPayments.paid = ContPaperReceipts.paid;
-                        ContPaperPayments.refType = "3";
-                        ContPaperPayments.indate = ContPaperReceipts.indate;
+                        ContPaperPayments.Dbtpaid = ContPaperReceipts.Crdpaid;
+                        ContPaperPayments.DbtrefType = 3;
+                        ContPaperPayments.Dbtindate = ContPaperReceipts.Crdindate;
                         ContPaperPayments.empId = ContPaperReceipts.empId;
                         ContPaperPayments.salesManId = ContPaperReceipts.salesManId;
                         ContPaperPayments.isDeleted = ContPaperReceipts.isDeleted;
@@ -104,7 +105,7 @@ namespace EdgeRealEstate.Controllers
                     }
                     else if (types == "3")
                     {
-                        ContPaperReceipts.refType = "3";
+                        ContPaperReceipts.CrdrefType = 6;
                        // ContPaperReceipts.Project_id = 0;
                         db.ContPaperReceipts.Add(ContPaperReceipts);
                         db.SaveChanges();
@@ -121,7 +122,7 @@ namespace EdgeRealEstate.Controllers
                     }
                     else if (types == "4")
                     {
-                        ContPaperReceipts.refType = "4";
+                        ContPaperReceipts.CrdrefType = 7;
                         db.ContPaperReceipts.Add(ContPaperReceipts);
                         try
                         {
@@ -130,9 +131,9 @@ namespace EdgeRealEstate.Controllers
                         catch(Exception eex)
                         { }
                         ContPaperPayments.ContributorId = ContPaperReceipts.ContributorId;
-                        ContPaperPayments.paid = ContPaperReceipts.paid;
-                        ContPaperPayments.refType = "2";
-                        ContPaperPayments.indate = ContPaperReceipts.indate;
+                        ContPaperPayments.Dbtpaid = ContPaperReceipts.Crdpaid;
+                        ContPaperPayments.DbtrefType = 2;
+                        ContPaperPayments.Dbtindate = ContPaperReceipts.Crdindate;
                         ContPaperPayments.empId = ContPaperReceipts.empId;
                         ContPaperPayments.salesManId = ContPaperReceipts.salesManId;
                         ContPaperPayments.isDeleted = ContPaperReceipts.isDeleted;

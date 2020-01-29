@@ -305,6 +305,7 @@
     <Compile Include="Entities\LKCountry.cs" />
     <Compile Include="Entities\LKNationality.cs" />
     <Compile Include="Entities\LKPaymentMethod.cs" />
+    <Compile Include="Entities\LKRefTypes.cs" />
     <Compile Include="Entities\LKStore.cs" />
     <Compile Include="Entities\LKTitle.cs" />
     <Compile Include="Entities\MainItemDetail.cs" />
@@ -383,13 +384,53 @@
     <Compile Include="Migrations\202001251147108_afterLocal.designer.cs">
       <DependentUpon>202001251147108_afterLocal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001251252036_changeClinetName.cs" />
-    <Compile Include="Migrations\202001251252036_changeClinetName.designer.cs">
-      <DependentUpon>202001251252036_changeClinetName.cs</DependentUpon>
+    <Compile Include="Migrations\202001261117153_addvat.cs" />
+    <Compile Include="Migrations\202001261117153_addvat.designer.cs">
+      <DependentUpon>202001261117153_addvat.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001260553153_rashamerg.cs" />
-    <Compile Include="Migrations\202001260553153_rashamerg.designer.cs">
-      <DependentUpon>202001260553153_rashamerg.cs</DependentUpon>
+    <Compile Include="Migrations\202001261123097_adddesforMoney.cs" />
+    <Compile Include="Migrations\202001261123097_adddesforMoney.designer.cs">
+      <DependentUpon>202001261123097_adddesforMoney.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001261205056_addRefTypes.cs" />
+    <Compile Include="Migrations\202001261205056_addRefTypes.designer.cs">
+      <DependentUpon>202001261205056_addRefTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001261213136_addRefTypes1.cs" />
+    <Compile Include="Migrations\202001261213136_addRefTypes1.designer.cs">
+      <DependentUpon>202001261213136_addRefTypes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001261921577_relationconpaper.cs" />
+    <Compile Include="Migrations\202001261921577_relationconpaper.designer.cs">
+      <DependentUpon>202001261921577_relationconpaper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001261934004_conpaper.cs" />
+    <Compile Include="Migrations\202001261934004_conpaper.designer.cs">
+      <DependentUpon>202001261934004_conpaper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001261956374_conpaper1.cs" />
+    <Compile Include="Migrations\202001261956374_conpaper1.designer.cs">
+      <DependentUpon>202001261956374_conpaper1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001270729366_addrelation.cs" />
+    <Compile Include="Migrations\202001270729366_addrelation.designer.cs">
+      <DependentUpon>202001270729366_addrelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001271040169_relationCredite.cs" />
+    <Compile Include="Migrations\202001271040169_relationCredite.designer.cs">
+      <DependentUpon>202001271040169_relationCredite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001280903101_UpdatesTypes.cs" />
+    <Compile Include="Migrations\202001280903101_UpdatesTypes.designer.cs">
+      <DependentUpon>202001280903101_UpdatesTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001281126080_UpdatesTypes1.cs" />
+    <Compile Include="Migrations\202001281126080_UpdatesTypes1.designer.cs">
+      <DependentUpon>202001281126080_UpdatesTypes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001281326288_UpdatesTypes2.cs" />
+    <Compile Include="Migrations\202001281326288_UpdatesTypes2.designer.cs">
+      <DependentUpon>202001281326288_UpdatesTypes2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -425,6 +466,8 @@
     <Compile Include="Models\ViewModels\BillPurchasesDetailsViewModel.cs" />
     <Compile Include="Models\ViewModels\CheckBoxItem.cs" />
     <Compile Include="Models\ViewModels\ConstructionMaterialViewModel.cs" />
+    <Compile Include="Models\ViewModels\ConterPaperPaymentViewModel.cs" />
+    <Compile Include="Models\ViewModels\ConterPaperReceiptViewModel.cs" />
     <Compile Include="Models\ViewModels\ContPaperPaymentViewModel.cs" />
     <Compile Include="Models\ViewModels\ContPaperReceiptViewModel.cs" />
     <Compile Include="Models\ViewModels\contractorPaperPaymentViewModel.cs" />
@@ -3899,6 +3942,8 @@
     <Content Include="Views\CustomerSelectFlatReport\Index2.cshtml" />
     <Content Include="Views\CustomerSelectFlatReport\Index___.cshtml" />
     <Content Include="Views\ProjectsFlatReport\Index.cshtml" />
+    <Content Include="Views\ContributerMoveReport\Index___.cshtml" />
+    <Content Include="Views\ContributerMoveReport\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Debug\TempPE\" />
@@ -3961,11 +4006,41 @@
     <EmbeddedResource Include="Migrations\202001251147108_afterLocal.resx">
       <DependentUpon>202001251147108_afterLocal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001251252036_changeClinetName.resx">
-      <DependentUpon>202001251252036_changeClinetName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001261117153_addvat.resx">
+      <DependentUpon>202001261117153_addvat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001260553153_rashamerg.resx">
-      <DependentUpon>202001260553153_rashamerg.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001261123097_adddesforMoney.resx">
+      <DependentUpon>202001261123097_adddesforMoney.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001261205056_addRefTypes.resx">
+      <DependentUpon>202001261205056_addRefTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001261213136_addRefTypes1.resx">
+      <DependentUpon>202001261213136_addRefTypes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001261921577_relationconpaper.resx">
+      <DependentUpon>202001261921577_relationconpaper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001261934004_conpaper.resx">
+      <DependentUpon>202001261934004_conpaper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001261956374_conpaper1.resx">
+      <DependentUpon>202001261956374_conpaper1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001270729366_addrelation.resx">
+      <DependentUpon>202001270729366_addrelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001271040169_relationCredite.resx">
+      <DependentUpon>202001271040169_relationCredite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001280903101_UpdatesTypes.resx">
+      <DependentUpon>202001280903101_UpdatesTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001281126080_UpdatesTypes1.resx">
+      <DependentUpon>202001281126080_UpdatesTypes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001281326288_UpdatesTypes2.resx">
+      <DependentUpon>202001281326288_UpdatesTypes2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ContPaperPaymentReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

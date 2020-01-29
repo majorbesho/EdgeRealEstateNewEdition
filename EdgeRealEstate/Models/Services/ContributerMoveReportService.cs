@@ -14,47 +14,58 @@ namespace EdgeRealEstate.Models.Services
             this.db = db;
         }
 
-        public IList<ContributerMoveViewModel> GetAll(int? ContributerID)
+        public IList<ContributerMoveViewModel> GetAll(int? FContributerID, int? ToContributerID)
         {
             var result = HttpContext.Current.Session["Contributer"] as IList<ContributerMoveViewModel>;
 
-            result = (from i in db.Contributor
-                      join crd in db.ContPaperReceipts.DefaultIfEmpty() on i.id equals crd.ContributorId
-                      join dbt in db.ContPaperPayments.DefaultIfEmpty() on i.id equals dbt.ContributorId
+            var ResultReceipt = (from i in db.Contributor
+                                 join crd in db.ContPaperReceipts on i.id equals crd.ContributorId
 
-                      //SELECT dbo.Contributors.ARName, dbo.ContPaperReceipts.paid AS credit, dbo.ContPaperReceipts.refType AS credittype, dbo.ContPaperReceipts.indate, dbo.ContPaperPayments.paid AS debit, dbo.ContPaperPayments.refType AS Expr1,
-                      //                          dbo.ContPaperPayments.indate AS Expr2
+                                 //join dbt in db.ContPaperPayments on i.id equals dbt.ContributorId
+                                 where i.id >= FContributerID && i.id <= ToContributerID
+                                 && i.IsDeleted == false
+                                 select new
+                                 {
+                                     ContributorId = i.id,
+                                     ContributorName = i.ARName,
+                                     indateCredit = crd.Crdindate,
+                                     paidCredit = crd.Crdpaid,
+                                     RefnameCredit = crd.RefType.Aname,
+                                     refTypeCreditID = crd.id
+                                     //  indateDebit = dbt.indate,
+                                     // paidDebit= dbt.paid,
+                                     // RefnameDebit = dbt.RefType.Aname
 
-                      where i.id == ContributerID
-                      &&
-                      i.IsDeleted == false
-                      select new ContributerMoveViewModel
-                      {
-                          ContributorId = i.id,
-                          ContributorName = i.ARName,
-                          //refTypeCredit =()
-                          RefnameCredit = (from Credit in db.ContPaperReceipts
-                                           join reft in db.LKRefTypes on Credit.refType equals reft.Code
-                                           where reft.CridetDebit == 2
-                                           select reft.Aname).SingleOrDefault(),
-                          //              where LocalDebit.GlJournalID == glJournals.GlJournalID
-                          //               && LocalDebit.LocalCredit == 0
-                          //              orderby LocalDebit.GlJournalDetailID
-                          //              select LocalDebit.LocalDebit).FirstOrDefault(),
-                          //RefnameCredit =
-                          indateCredit = crd.indate,
-                          paidCredit = crd.paid,
-                          //refTypeDebit 
-                          RefnameDebit = (from Debit in db.ContPaperPayments
-                                         join reft in db.LKRefTypes on Debit.refType equals reft.Code
-                                         where reft.CridetDebit == 1
-                                         select reft.Aname).SingleOrDefault(),
-                          indateDebit = dbt.indate,
-                          paidDebit = dbt.paid
-                          //TotalCredit 
-                          //TotalDebit 
-                      }).ToList();
+                                 }).OrderByDescending(x => x.refTypeCreditID).Union(from i in db.Contributor
+                                                                                        // join crd in db.ContPaperReceipts on i.id equals crd.ContributorId
+                                                                                    join dbt in db.ContPaperPayments on i.id equals dbt.ContributorId
+                                                                                    where i.id >= FContributerID && i.id<= ToContributerID
+                                                                                    &&
+                                                                                    i.IsDeleted == false
+                                                                                    select new
+                                                                                    {
+                                                                                        ContributorId = i.id,
+                                                                                        ContributorName = i.ARName,
+                                                                                        indateCredit = dbt.Dbtindate,
+                                                                                        paidCredit = dbt.Dbtpaid,
+                                                                                        RefnameCredit = dbt.RefType.Aname,
+                                                                                        refTypeCreditID = dbt.id
+                                                                                        //indateDebit = dbt.Dbtindate,
+                                                                                        //paidDebit= dbt.Dbtpaid//,
+                                                                                        // RefnameDebit = dbt.RefType.Aname
 
+                                                                                    }).OrderByDescending(x => x.refTypeCreditID).ToList().Select(x => new ContributerMoveViewModel
+                                                                                    {
+                                                                                        ContributorId = x.ContributorId,
+                                                                                        ContributorName = x.ContributorName,
+                                                                                        indateCredit = x.indateCredit,
+                                                                                        paidCredit = x.paidCredit,
+                                                                                        RefnameCredit = x.RefnameCredit,
+                                                                                        refTypeCreditID = x.refTypeCreditID
+                                                                                        // indateDebit = x.indateDebit,
+                                                                                        // paidDebit = x.paidDebit//,
+                                                                                        //  RefnameDebit = x.RefnameDebit
+                                                                                    }).OrderBy(x => x.indateCredit).ToList();
             //result = (from i in db.Projectes
             //          where i.id <= FromProID && i.id >= ToProID
             //          select new ContributerMoveViewModel
@@ -72,9 +83,9 @@ namespace EdgeRealEstate.Models.Services
         }
 
 
-        public IEnumerable<ContributerMoveViewModel> Read(int? ContributerID)
+        public IEnumerable<ContributerMoveViewModel> Read(int? FContributerID, int? ToContributerID)
         {
-            return GetAll(ContributerID);
+            return GetAll(FContributerID, ToContributerID);
         }
         public void Dispose()
         {

@@ -34,6 +34,7 @@ namespace EdgeRealEstate.Models
             return new ApplicationDbContext();
         }
         public DbSet<LKPaymentMethod> PaymentMethods { get; set; }
+        public DbSet<LKRefTypes> LKRefTypes { get; set; }
         public virtual DbSet<LKCountry> LKCountries { get; set; }
         public virtual DbSet<FlatType> FlatTypes { get; set; }
         public virtual DbSet<Buildings> Buildingses { get; set; }
@@ -157,6 +158,8 @@ namespace EdgeRealEstate.Models
             //    .WillCascadeOnDelete(false);
         }
 
-        
+        public System.Data.Entity.DbSet<EdgeRealEstate.Models.ViewModels.ContributerMoveViewModel> ContributerMoveViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<EdgeRealEstate.Models.ViewModels.ContributerPaymentForProjectVM> ContributerPaymentForProjectVMs { get; set; }
     }
 }

@@ -33,12 +33,12 @@ namespace EdgeRealEstate.Models.Services
                               where i.isDeleted == false
                               select new ContPaperReceiptViewModel
                               {
-                                  indate = (DateTime)i.indate,
+                                  indate = (DateTime)i.Crdindate,
                                   ContributorId = (int)i.ContributorId,
                                   contName = i.Contributor.ARName,
                                   //salesManId = (int)i.salesManId,
                                   salesManName = i.Employee1.ARName,
-                                  paid = (decimal)i.paid,
+                                  paid = (decimal)i.Crdpaid,
                                   FromDate = vFromDate,
                                   toDate = DateTime.Now
                               }).ToList();
@@ -52,14 +52,14 @@ namespace EdgeRealEstate.Models.Services
                     result = (from i in db.ContPaperReceipts
                               where i.isDeleted == false
                               //&& i.customerId >= FromCust && i.customerId <= toCust
-                              && i.indate >= FromDate && i.indate <= toDate
+                              && i.Crdindate >= FromDate && i.Crdindate <= toDate
                               //&& i.salesManId >= FromSalesMan && i.salesManId <= toSalesMan
                               select new ContPaperReceiptViewModel
                               {
-                                  indate = (DateTime)i.indate,
+                                  indate = (DateTime)i.Crdindate,
                                   ContributorId = (int)i.ContributorId,
                                   //salesManId = (int)i.salesManId,
-                                  paid = (decimal)i.paid,
+                                  paid = (decimal)i.Crdpaid,
                                   contName = i.Contributor.ARName,
                                   salesManName = i.Employee1.ARName,
                                   FromDate = (DateTime)FromDate,
