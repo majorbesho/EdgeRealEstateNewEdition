@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EdgeRealEstate.Models.ViewModels.ContributerMoveViewModel>
+﻿@using EdgeRealEstate.Models.ViewModels
+@*@model IEnumerable<EdgeRealEstate.Models.ViewModels.ContributerMoveViewModel>*@
 
 @{
     ViewBag.Title = "Index";
@@ -48,122 +49,207 @@
         </div>
     }
 
-    <div @*class="col-md-8 pt-3 loaditems-grid"*@>
-        @foreach (var group in Model.GroupBy(m => m.ContributorName))
-        {
-            <div id="@group.Key" @*class="tabmenucontent table-responsive"*@>
-                <div>
-                    <table class="table" dir="rtl" width="70%" style="font-weight:bold; font-size:medium">
-                        <tr>
-                            <td style="font-weight:bold; font-size:medium">
-                                المساهم
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => @group.Key)
-                            </td>
-                            <td>
-                            </td>
+    @*<div >
+            @foreach (var group in Model.GroupBy(m => m.ContributorName))
+            {
+                <div id="@group.Key" >
+                    <div>
+                        <table class="table" dir="rtl" width="70%" style="font-weight:bold; font-size:medium">
+                            <tr>
+                                <td style="font-weight:bold; font-size:medium">
+                                    المساهم
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => @group.Key)
+                                </td>
+                                <td>
+                                </td>
 
-                        </tr>
-                        <tr>
-                            <td>
-                                رصيد الصكوك
-                            </td>
-                            <td>
-                                @ViewBag.C
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td>
-                                رصيد المبالغ
-                            </td>
-                            <td>
-                                @ViewBag.d
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-                <table class="table" dir="rtl">
-              
-                    @*total : @ViewBag.C
-                    total @ViewBag.d*@
-
-                    <thead style="background-color:#ccc; text-align-last:center" dir="rtl">
-                        <tr dir="rtl">
-
-                            
-                            @*<th>
-                    @Html.DisplayNameFor(model => model.refTypeCredit)
-                </th>*@
-                            <th>
-                                حركة المساهم
-                            </th>
-                            <th>
-                                التاريخ
-                            </th>
-                            <th>
-                                المبلغ
-                            </th>
-                            @*<th>
-                    @Html.DisplayNameFor(model => model.refTypeCreditID)
-                </th>*@
-
-                        </tr>
-
-                    </thead>
-                    <tbody style="text-align-last:center" dir="rtl">
-
-                   
-                        @foreach (var item in group)
-                        {
-
+                            </tr>
+                            <tr>
+                                <td>
+                                    رصيد الصكوك
+                                </td>
+                                <td>
+                                    @ViewBag.C
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
                             <tr>
 
-                              
-                                @*<td>
-                        @Html.DisplayFor(modelItem => item.refTypeCredit)
-                    </td>*@
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.RefnameCredit)
+                                    رصيد المبالغ
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.indateCredit)
+                                    @ViewBag.d
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.paidCredit)
-                                </td>
-                                @*<td>
-                        @Html.DisplayFor(modelItem => item.refTypeCreditID)
-                    </td>*@
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <table class="table" dir="rtl">
+
+
+
+                        <thead style="background-color:#ccc; text-align-last:center" dir="rtl">
+                            <tr dir="rtl">
+
+                                <th>
+                                    حركة المساهم
+                                </th>
+                                <th>
+                                    التاريخ
+                                </th>
+                                <th>
+                                    المبلغ
+                                </th>
 
                             </tr>
 
-                        }
-
-                    </tbody>
-
-                    @*<tfoot style="text-align-last: center">
-            <tr>
-                <td> </td>
-                <td> الاجمالي</td>
-                <td> </td>
-                <td>@Model.Sum(i => i.paidCredit)</td>
+                        </thead>
+                        <tbody style="text-align-last:center" dir="rtl">
 
 
-            </tr>
-        </tfoot>*@
+                            @foreach (var item in group)
+                            {
 
-                </table>
+                                <tr>
 
-            </div>
-        }
-    </div>
-  
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RefnameCredit)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.indateCredit)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.paidCredit)
+                                    </td>
+
+                                </tr>
+
+                            }
+
+                        </tbody>
 
 
+
+                    </table>
+
+                </div>
+            }
+        </div>*@
 
 </table>
+<div>
+    <table class="table" dir="rtl" width="70%" style="font-weight:bold; font-size:medium">
+        <tr>
+            <td style="font-weight:bold; font-size:medium">
+                المساهم
+            </td>
+            <td>
+                @ViewBag.Cont
+                @*@Html.DisplayFor(modelItem => @group.Key)*@
+            </td>
+            <td>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                رصيد الصكوك
+            </td>
+            <td>
+                @ViewBag.C
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                رصيد المبالغ
+            </td>
+            <td>
+                @ViewBag.d
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<div class="col-md-12">
+    <div class="col-md-6">
+        <table class="table" dir="rtl">
+            <thead  style="background-color:#ccc;text-align-last:center" dir="rtl">
+                <tr>
+                    <th>
+                        تاريخ
+                    </th>
+                    <th>
+                        مبالغ
+                    </th>
+                    <th>
+                        البيان
+                    </th>
+
+                </tr>
+            </thead>
+            @foreach (ConterPaperPaymentViewModel payment in (List<ConterPaperPaymentViewModel>)ViewBag.Payment)
+            {
+
+                <tbody  style="text-align-last:center" dir="rtl">
+                    <tr>
+                        <td>
+                            @payment.indateDebit.ToShortDateString()
+                        </td>
+                        <td>
+                            @payment.paidDebit
+                        </td>
+                        <td>
+                            @payment.RefnameDebit
+                        </td>
+
+                    </tr>
+                </tbody>
+
+            }
+        </table>
+    </div>
+    <div class="col-md-6">
+        <table class="table" dir="rtl">
+            <thead  style="background-color:#ccc;text-align-last:center" dir="rtl">
+                <tr>
+                    <th>
+                        تاريخ
+                    </th>
+                    <th>
+                        مبلغ
+                    </th>
+                    <th>
+                        البيان
+                    </th>
+
+                </tr>
+            </thead>
+            @foreach (ConterPaperReceiptViewModel receipt in (List<ConterPaperReceiptViewModel>)ViewBag.Receipt)
+            {
+
+                <tbody  style="text-align-last:center" dir="rtl">
+                    <tr>
+                        <td>
+                            @receipt.indateCredit.ToShortDateString()
+                        </td>
+                        <td>
+                            @receipt.paidCredit
+                        </td>
+                        <td>
+                            @receipt.RefnameCredit
+                        </td>
+
+                    </tr>
+                </tbody>
+
+            }
+        </table>
+    </div>
+</div>
