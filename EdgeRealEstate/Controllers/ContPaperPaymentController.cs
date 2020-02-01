@@ -28,6 +28,7 @@ namespace EdgeRealEstate.Controllers
             ViewBag.Contributor = new SelectList(db.Contributor, "id", "ARName");
             ViewBag.Employees = new SelectList(db.Employees, "Id", "ARName");
             ViewBag.SalesMans = new SelectList(db.Employees, "Id", "ARName");
+            ViewBag.paidMethod = new SelectList(db.PaymentMethods, "Id", "ARName");
             //ViewData["Types"] = new List<SelectListItem>
             //{
             //    new SelectListItem{ Text=" مجنب ", Value = "1" },
@@ -35,7 +36,7 @@ namespace EdgeRealEstate.Controllers
             //    new SelectListItem{ Text="", Value = "3", Selected = true },
             //};
 
-            
+
             return View();
         }
 
@@ -44,6 +45,7 @@ namespace EdgeRealEstate.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ContPaperPayment ContPaperPayments)
         {
+            ContPaperReceipt ContPaperReceipts = new ContPaperReceipt();
             try
             {
                 if (ModelState.IsValid)
@@ -51,16 +53,43 @@ namespace EdgeRealEstate.Controllers
                     ViewBag.Contributor = new SelectList(db.Contributor, "id", "ARName", ContPaperPayments.ContributorId);
                     ViewBag.Employees = new SelectList(db.Employees, "Id", "ARName", ContPaperPayments.empId);
                     ViewBag.SalesMans = new SelectList(db.Employees, "Id", "ARName", ContPaperPayments.salesManId);
+                    ViewBag.paidMethod = new SelectList(db.PaymentMethods, "Id", "ARName", ContPaperPayments.paidMethod);
                     ContPaperPayments.isDeleted = false;
                     ContPaperPayments.DbtrefType = 1;
                     db.ContPaperPayments.Add(ContPaperPayments);
-                    db.SaveChanges();
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch(Exception ee)
+                    {
+
+                    }
+                    ContPaperReceipts.ContributorId = ContPaperPayments.ContributorId;
+                   // ContPaperReceipts.Crdpaid = 0;
+                    // ContPaperPayments.DbtrefType = 3;
+                    ContPaperReceipts.Crdindate = ContPaperPayments.Dbtindate;
+                    ContPaperReceipts.empId = ContPaperPayments.empId;
+                    ContPaperReceipts.salesManId = ContPaperPayments.salesManId;
+                    ContPaperReceipts.isDeleted = ContPaperPayments.isDeleted;
+
+                    // ContPaperPayments.ProjectId = ContPaperReceipts.ProjectId;
+                    db.ContPaperReceipts.Add(ContPaperReceipts);
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
                     ViewBag.msgg = 1;
                     ModelState.Clear();
                     return View();
                 }
             }
-            catch (DataException)
+            catch(Exception e)
+           // catch (DataException)
             {
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }

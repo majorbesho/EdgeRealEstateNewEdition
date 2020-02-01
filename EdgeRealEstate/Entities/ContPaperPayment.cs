@@ -15,8 +15,8 @@ namespace EdgeRealEstate.Entities
         public decimal Dbtpaid { get; set; }
         public string Dbtnotes { get; set; }
         
-        public int refID { get; set; }
-        public string paidMethod { get; set; }
+        public int? refID { get; set; }
+        public int paidMethod { get; set; }
         public string ContPaperPaymentType { get; set; }
 
         //[ForeignKey("Employee1")]
@@ -36,7 +36,7 @@ namespace EdgeRealEstate.Entities
         public virtual Projects Project { get; set; }
 
         [ForeignKey("RefType")]
-        public int DbtrefType { get; set; }
+        public int? DbtrefType { get; set; }
         public virtual LKRefTypes RefType { get; set; }
     }
 }

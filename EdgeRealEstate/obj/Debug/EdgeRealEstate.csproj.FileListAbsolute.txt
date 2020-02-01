@@ -877,3 +877,5 @@ D:\Edge\GitFinalElmajed\EdgeRealEstateNewEdition\EdgeRealEstate\obj\Debug\EdgeRe
 D:\Edge\GitFinalElmajed\EdgeRealEstateNewEdition\EdgeRealEstate\obj\Debug\EdgeRealEstate.csproj.CopyComplete
 D:\Edge\GitFinalElmajed\EdgeRealEstateNewEdition\EdgeRealEstate\obj\Debug\EdgeRealEstate.dll
 D:\Edge\GitFinalElmajed\EdgeRealEstateNewEdition\EdgeRealEstate\obj\Debug\EdgeRealEstate.pdb
+D:\Edge\GitFinalElmajed\EdgeRealEstateNewEdition\EdgeRealEstate\obj\Debug\EdgeRealEstate.Migrations.changetypes.resources
+D:\Edge\GitFinalElmajed\EdgeRealEstateNewEdition\EdgeRealEstate\obj\Debug\EdgeRealEstate.Migrations.changetypes1.resources

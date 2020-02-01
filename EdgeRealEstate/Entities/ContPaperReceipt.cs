@@ -16,7 +16,7 @@ namespace EdgeRealEstate.Entities
         public string Crdnotes { get; set; }
 
         //public int refType { get; set; }
-        public int refID { get; set; }
+        public int? refID { get; set; }
         public string paidMethod { get; set; }
         public string ContPaperReceiptType { get; set; }
 
@@ -39,7 +39,7 @@ namespace EdgeRealEstate.Entities
 
 
         [ForeignKey("RefType")]
-        public int CrdrefType { get; set; }
+        public int? CrdrefType { get; set; }
         public virtual LKRefTypes RefType { get; set; }
 
     }

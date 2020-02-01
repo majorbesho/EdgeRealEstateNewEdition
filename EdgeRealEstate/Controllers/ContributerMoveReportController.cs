@@ -225,7 +225,7 @@ namespace EdgeRealEstate.Controllers
             //                  SoledFlat = x.SoledFlat
             //              }).ToList();
             #endregion
-            ViewBag.C =TotalCredit4 - ToTalD2;
+            ViewBag.C =TotalCredit5 - ToTalD2;
             ViewBag.d = TotalCredit4 + TotalCredit6 + TotalCredit7 - ToTalD1 - ToTalD3;
             ViewBag.Payment = ResultPayment.ToList();
             ViewBag.Receipt = ResultReceipt.ToList();

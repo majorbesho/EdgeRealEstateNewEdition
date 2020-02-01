@@ -432,6 +432,14 @@
     <Compile Include="Migrations\202001281326288_UpdatesTypes2.designer.cs">
       <DependentUpon>202001281326288_UpdatesTypes2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002011230555_changetypes.cs" />
+    <Compile Include="Migrations\202002011230555_changetypes.designer.cs">
+      <DependentUpon>202002011230555_changetypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002011429043_changetypes1.cs" />
+    <Compile Include="Migrations\202002011429043_changetypes1.designer.cs">
+      <DependentUpon>202002011429043_changetypes1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -4041,6 +4049,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001281326288_UpdatesTypes2.resx">
       <DependentUpon>202001281326288_UpdatesTypes2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002011230555_changetypes.resx">
+      <DependentUpon>202002011230555_changetypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002011429043_changetypes1.resx">
+      <DependentUpon>202002011429043_changetypes1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ContPaperPaymentReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
