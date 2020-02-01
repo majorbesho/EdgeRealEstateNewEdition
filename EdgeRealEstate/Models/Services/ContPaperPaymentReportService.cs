@@ -33,10 +33,10 @@ namespace EdgeRealEstate.Models.Services
                               where i.isDeleted == false
                               select new ContPaperPaymentViewModel
                               {
-                                  indate = (DateTime)i.indate,
+                                  indate = (DateTime)i.Dbtindate,
                                   ContributorId = (int)i.ContributorId,
                                   //salesManId = (int)i.salesManId,
-                                  paid = (decimal)i.paid,
+                                  paid = (decimal)i.Dbtpaid,
                                   ContributorName = i.Contributor.ARName,
                                   salesManName = i.Employee1.ARName,
                                   FromDate = vFromDate,
@@ -51,14 +51,14 @@ namespace EdgeRealEstate.Models.Services
                     result = (from i in db.ContPaperPayments
                               where i.isDeleted == false
                               //&& i.customerId >= FromCust && i.customerId <= toCust
-                              && i.indate >= FromDate && i.indate <= toDate
+                              && i.Dbtindate >= FromDate && i.Dbtindate <= toDate
                               //&& i.salesManId >= FromSalesMan && i.salesManId <= toSalesMan
                               select new ContPaperPaymentViewModel
                               {
-                                  indate = (DateTime)i.indate,
+                                  indate = (DateTime)i.Dbtindate,
                                   ContributorId = (int)i.ContributorId,
                                   //salesManId = (int)i.salesManId,
-                                  paid = (decimal)i.paid,
+                                  paid = (decimal)i.Dbtpaid,
                                   ContributorName = i.Contributor.ARName,
                                   salesManName = i.Employee1.ARName,
                                   FromDate = (DateTime)FromDate,

@@ -28,12 +28,12 @@ namespace EdgeRealEstate.Controllers
             ViewBag.Contributor = new SelectList(db.Contributor, "id", "ARName");
             ViewBag.Employees = new SelectList(db.Employees, "Id", "ARName");
             ViewBag.SalesMans = new SelectList(db.Employees, "Id", "ARName");
-            ViewData["Types"] = new List<SelectListItem>
-            {
-                new SelectListItem{ Text=" مجنب ", Value = "1" },
-                new SelectListItem{ Text="رصيد", Value = "2" },
-                new SelectListItem{ Text="", Value = "3", Selected = true },
-            };
+            //ViewData["Types"] = new List<SelectListItem>
+            //{
+            //    new SelectListItem{ Text=" مجنب ", Value = "1" },
+            //    new SelectListItem{ Text="رصيد", Value = "2" },
+            //    new SelectListItem{ Text="", Value = "3", Selected = true },
+            //};
 
             
             return View();
@@ -52,6 +52,7 @@ namespace EdgeRealEstate.Controllers
                     ViewBag.Employees = new SelectList(db.Employees, "Id", "ARName", ContPaperPayments.empId);
                     ViewBag.SalesMans = new SelectList(db.Employees, "Id", "ARName", ContPaperPayments.salesManId);
                     ContPaperPayments.isDeleted = false;
+                    ContPaperPayments.DbtrefType = 1;
                     db.ContPaperPayments.Add(ContPaperPayments);
                     db.SaveChanges();
                     ViewBag.msgg = 1;
@@ -136,6 +137,7 @@ namespace EdgeRealEstate.Controllers
         {
             if (id == null)
             {
+
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ContPaperPayment ContPaperPayments = db.ContPaperPayments.Find(id);

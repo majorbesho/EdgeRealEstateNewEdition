@@ -12,16 +12,16 @@ namespace EdgeRealEstate.Entities
 
         [ForeignKey("Contributor")]
         public int ContributorId { get; set; }
-        public decimal paid { get; set; }
-        public string notes { get; set; }
-        public string refType { get; set; }
+        public decimal Dbtpaid { get; set; }
+        public string Dbtnotes { get; set; }
+        
         public int refID { get; set; }
         public string paidMethod { get; set; }
         public string ContPaperPaymentType { get; set; }
 
         //[ForeignKey("Employee1")]
         public int salesManId { get; set; }
-        public DateTime indate { get; set; }
+        public DateTime Dbtindate { get; set; }
 
         //[ForeignKey("Employee")]
         public int empId { get; set; }
@@ -34,5 +34,9 @@ namespace EdgeRealEstate.Entities
         [ForeignKey("Project")]
         public int? ProjectId { get; set; }
         public virtual Projects Project { get; set; }
+
+        [ForeignKey("RefType")]
+        public int DbtrefType { get; set; }
+        public virtual LKRefTypes RefType { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace EdgeRealEstate.Controllers
             }
             //var FromPro = db.Projectes.Select(c => c.id).First();
             var result = (from i in db.Projectes
-                      where i.id <= FromPro && i.id >= ToPro
+                      where i.id >= FromPro && i.id <= ToPro
                           select new 
                       {
                           ProjectName = i.Aname,

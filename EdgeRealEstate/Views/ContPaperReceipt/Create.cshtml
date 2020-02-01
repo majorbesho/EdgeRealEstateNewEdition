@@ -31,9 +31,9 @@
         <div class="col-md-4">
             @Html.DropDownList("Types", ViewData["Types"] as List<SelectListItem>
     , "اختر", new { @class = "form-control" })
-    @Html.ValidationMessageFor(model => model.refType, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(model => model.CrdrefType, "", new { @class = "text-danger" })
 </div>
-        @Html.LabelFor(model => model.refType, "نوع الحركة", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.CrdrefType, "نوع الحركة", htmlAttributes: new { @class = "control-label col-md-2" })
     </div>
     <div class="form-group">
         <div class="col-md-10">
@@ -62,31 +62,31 @@
     </div>
     <div class="form-group">
         <div class="col-md-10">
-            @Html.TextBoxFor(model => model.paid, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.paid, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(model => model.Crdpaid, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Crdpaid, "", new { @class = "text-danger" })
         </div>
-        @Html.LabelFor(model => model.paid, "المدفوع", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Crdpaid, "المدفوع", htmlAttributes: new { @class = "control-label col-md-2" })
     </div>
     <div class="form-group">
         <div class="col-md-10">
-            @Html.TextBoxFor(model => model.refType, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.refType, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(model => model.CrdrefType, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CrdrefType, "", new { @class = "text-danger" })
         </div>
-        @Html.LabelFor(model => model.refType, "نوع المرجع", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.CrdrefType, "نوع المرجع", htmlAttributes: new { @class = "control-label col-md-2" })
     </div>
     <div class="form-group">
         <div class="col-md-10">
-            @(Html.Kendo().DatePicker().Name("indate").Format("yyyy/MM/dd").Min(DateTime.Today.AddDays(1)).HtmlAttributes(new { @class = "form-control" }))
-            @Html.ValidationMessageFor(model => model.indate, "", new { @class = "text-danger" })
+            @(Html.Kendo().DatePicker().Name("Crdindate").Format("yyyy/MM/dd").Min(DateTime.Today.AddDays(1)).HtmlAttributes(new { @class = "form-control" }))
+            @Html.ValidationMessageFor(model => model.Crdindate, "", new { @class = "text-danger" })
         </div>
-        @Html.LabelFor(model => model.indate, "فى تاريخ", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Crdindate, "فى تاريخ", htmlAttributes: new { @class = "control-label col-md-2" })
     </div>
     <div class="form-group">
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.notes, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.notes, "", new { @class = "text-danger" })
+            @Html.TextAreaFor(model => model.Crdnotes, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Crdnotes, "", new { @class = "text-danger" })
         </div>
-        @Html.LabelFor(model => model.notes, "ملاحظات", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Crdnotes, "ملاحظات", htmlAttributes: new { @class = "control-label col-md-2" })
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

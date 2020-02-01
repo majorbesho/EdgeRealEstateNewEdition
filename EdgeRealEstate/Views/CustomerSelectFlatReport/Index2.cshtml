@@ -50,8 +50,8 @@
 }
 
 
-<table id="labsTypesTable" class="data table table-striped no-margin" dir="rtl">
-    <thead>
+<table @*id="labsTypesTable"*@ class="data table table-striped no-margin" dir="rtl">
+    <thead style="background-color:#ccc; text-align-last:center" dir="rtl">
         <tr>
             <th>تاريخ البيع</th>
             <th>رقم الوحدة</th>
@@ -61,7 +61,7 @@
             <th>اسم المشتري</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody style="text-align-last:center">
         @foreach (var item in Model)
         {
             <tr>
@@ -75,7 +75,7 @@
             </tr>
         }
     </tbody>
-    <tfoot>
+    <tfoot style="text-align-last:center">
         <tr>
             <td colspan="2"> الاجمالي</td>
             <td>@Model.Count()</td>

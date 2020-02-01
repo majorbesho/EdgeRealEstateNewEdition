@@ -47,12 +47,12 @@ namespace EdgeRealEstate.Controllers
             if (FromDate == null)
             {
                 var result = (from i in db.ContPaperReceipts
-                              where i.isDeleted == false && i.indate <= toDate
+                              where i.isDeleted == false && i.Crdindate <= toDate
                               select new ContPaperReceiptViewModel
                               {
-                                  indate = (DateTime)i.indate,
+                                  indate = (DateTime)i.Crdindate,
                                   ContributorId = (int)i.ContributorId,
-                                  paid = (decimal)i.paid,
+                                  paid = (decimal)i.Crdpaid,
                                   contName = i.Contributor.ARName,
                                   salesManName = i.Employee1.ARName,
                               }).ToList();
@@ -62,12 +62,12 @@ namespace EdgeRealEstate.Controllers
             if (toDate == null)
             {
                 var result = (from i in db.ContPaperReceipts
-                              where i.isDeleted == false && i.indate >= FromDate
+                              where i.isDeleted == false && i.Crdindate >= FromDate
                               select new ContPaperReceiptViewModel
                               {
-                                  indate = (DateTime)i.indate,
+                                  indate = (DateTime)i.Crdindate,
                                   ContributorId = (int)i.ContributorId,
-                                  paid = (decimal)i.paid,
+                                  paid = (decimal)i.Crdpaid,
                                   contName = i.Contributor.ARName,
                                   salesManName = i.Employee1.ARName,
                               }).ToList();
@@ -80,10 +80,10 @@ namespace EdgeRealEstate.Controllers
                               where i.isDeleted == false
                               select new ContPaperReceiptViewModel
                               {
-                                  indate = (DateTime)i.indate,
+                                  indate = (DateTime)i.Crdindate,
                                   ContributorId = (int)i.ContributorId,
                                   //salesManId = (int)i.salesManId,
-                                  paid = (decimal)i.paid,
+                                  paid = (decimal)i.Crdpaid,
                                   contName = i.Contributor.ARName,
                                   salesManName = i.Employee1.ARName,
                               }).ToList();
@@ -93,12 +93,12 @@ namespace EdgeRealEstate.Controllers
             if (FromDate != null && toDate != null)
             {
                 var result = (from i in db.ContPaperReceipts
-                              where i.isDeleted == false && i.indate >= FromDate && i.indate <= toDate
+                              where i.isDeleted == false && i.Crdindate >= FromDate && i.Crdindate <= toDate
                               select new ContPaperReceiptViewModel
                               {
-                                  indate = (DateTime)i.indate,
+                                  indate = (DateTime)i.Crdindate,
                                   ContributorId = (int)i.ContributorId,
-                                  paid = (decimal)i.paid,
+                                  paid = (decimal)i.Crdpaid,
                                   contName = i.Contributor.ARName,
                                   salesManName = i.Employee1.ARName,
                               }).ToList();
