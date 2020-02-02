@@ -72,7 +72,7 @@ namespace EdgeRealEstate.Controllers
                                      refTypeDebitID = dbt.id//,
 
 
-                                 }).OrderBy(x => x.refTypeDebitID).ThenBy(x=>x.indateDebit).ToList();
+                                 }).OrderBy(x => x.indateDebit).ThenBy(x => x.refTypeDebitID).ToList();
 
 
 
@@ -90,7 +90,7 @@ namespace EdgeRealEstate.Controllers
                                      paidCredit = crd.Crdpaid,
                                      RefnameCredit = crd.RefType.Aname,
                                      refTypeCreditID = crd.id
-                                 }).OrderBy(x => x.refTypeCreditID).ThenBy(x => x.indateCredit).ToList();
+                                 }).OrderBy(x => x.indateCredit).ThenBy(x => x.refTypeCreditID).ToList();
         
             var ResultCont = (from Cont in db.Contributor
                              where Cont.id== FromContributerID //&& i.id <= ToContributerID

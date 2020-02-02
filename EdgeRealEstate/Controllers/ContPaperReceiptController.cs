@@ -60,10 +60,6 @@ namespace EdgeRealEstate.Controllers
                     ViewBag.SalesMans = new SelectList(db.Employees, "Id", "ARName", ContPaperReceipts.salesManId);
                     ViewBag.paidMethod = new SelectList(db.PaymentMethods, "Id", "ARName", ContPaperReceipts.paidMethod);
                     ViewBag.Projects = new SelectList(db.Projectes, "Id", "Aname");
-                    //ViewBag.Contributor = new SelectList(db.Contributor, "id", "ARName" );
-                    //ViewBag.Employees = new SelectList(db.Employees, "Id", "ARName");
-                    //ViewBag.SalesMans = new SelectList(db.Employees, "Id", "ARName");
-                    //ViewBag.Projects = new SelectList(db.Projectes, "Id", "Aname");
                     ContPaperReceipts.isDeleted = false;
                     ContPaperReceipts.Crdindate = (DateTime)ContPaperReceipts.Crdindate;
                     var types = Request["Types"];

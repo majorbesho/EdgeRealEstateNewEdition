@@ -68,7 +68,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-10">
-            @(Html.Kendo().DatePicker().Name("indate").Format("yyyy/MM/dd").Min(DateTime.Today.AddDays(1)).HtmlAttributes(new { @class = "form-control" }))
+            @(Html.Kendo().DatePicker().Name("Dbtindate").Format("yyyy/MM/dd").Min(DateTime.Today.AddDays(1)).HtmlAttributes(new { @class = "form-control" }))
             @Html.ValidationMessageFor(model => model.Dbtindate, "", new { @class = "text-danger" })
         </div>
         @Html.LabelFor(model => model.Dbtindate, "فى تاريخ", htmlAttributes: new { @class = "control-label col-md-2" })

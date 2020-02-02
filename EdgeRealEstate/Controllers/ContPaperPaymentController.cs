@@ -48,14 +48,15 @@ namespace EdgeRealEstate.Controllers
             ContPaperReceipt ContPaperReceipts = new ContPaperReceipt();
             try
             {
-                if (ModelState.IsValid)
-                {
+                //if (ModelState.IsValid)
+                //{
                     ViewBag.Contributor = new SelectList(db.Contributor, "id", "ARName", ContPaperPayments.ContributorId);
                     ViewBag.Employees = new SelectList(db.Employees, "Id", "ARName", ContPaperPayments.empId);
                     ViewBag.SalesMans = new SelectList(db.Employees, "Id", "ARName", ContPaperPayments.salesManId);
                     ViewBag.paidMethod = new SelectList(db.PaymentMethods, "Id", "ARName", ContPaperPayments.paidMethod);
                     ContPaperPayments.isDeleted = false;
                     ContPaperPayments.DbtrefType = 1;
+                    ContPaperPayments.Dbtindate = (DateTime)ContPaperPayments.Dbtindate;
                     db.ContPaperPayments.Add(ContPaperPayments);
                     try
                     {
@@ -86,7 +87,7 @@ namespace EdgeRealEstate.Controllers
                     ViewBag.msgg = 1;
                     ModelState.Clear();
                     return View();
-                }
+                //}
             }
             catch(Exception e)
            // catch (DataException)
