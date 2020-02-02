@@ -12,6 +12,7 @@ namespace EdgeRealEstate.Entities
 
         [ForeignKey("Contributor")]
         public int ContributorId { get; set; }
+
         public decimal Dbtpaid { get; set; }
         public string Dbtnotes { get; set; }
         

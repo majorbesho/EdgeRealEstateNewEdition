@@ -22,21 +22,31 @@ namespace EdgeRealEstate.Entities
         public string Ename { get; set; }
         [DisplayName("الكود")]
         public string code { get; set; }
+        [DisplayName("مساحه الشقه")]
         public int FlotSize { get; set; }
+        [DisplayName("تاريخ البدايه الفعلي")]
         public DateTime BeginDateAcutely { get; set; }
+        [DisplayName("تاريخ البدايه المتوقع")]
         public DateTime BeginDateExpected { get; set; }
+        [DisplayName("تاريخ النهايه الفعلي")]
         public DateTime EndDateAcutely { get; set; }
+        [DisplayName("تاريخ النهايه المتوقع")]
         public DateTime EndDateExpected { get; set; }
         public string ImgUrl { get; set; }
         public string AttachedId { get; set; }
+        [DisplayName("الدور")]
         public int Level { get; set; }
+        [DisplayName("عدد غرف النوم")]
         public int BedroomNo { get; set; }
+        [DisplayName("عدد غرف الاسنقبال")]
         public int resptionNo { get; set; }
+        [DisplayName("ملاحظات")]
         public string Nots { get; set; }
+        [DisplayName("النوع")]
         public string  NewType { get; set; }
 
         //////////Start Relations///////////////
-
+        [DisplayName("حاله الشقه")]
         public int FlatTypeId { get; set; }
 
 
@@ -48,12 +58,13 @@ namespace EdgeRealEstate.Entities
 
         [ForeignKey(nameof(BuildingId))]
         public Buildings Building { get; set; }
-
+        [DisplayName("كود المشروع")]
         public int ProjectsId { get; set; }
 
         [ForeignKey(nameof(ProjectsId))]
         public Projects Projects { get; set; }
         public virtual DegreeOfExcellence DegreeOfExcellence { get; set; }
+        [DisplayName(" درجة التميز ")]
         public int DegreeOfExcellenceId { get; set; }
         public virtual ICollection<EmployeeSales> EmployeeSales { get; set; }
         public virtual ICollection<FlatAttachment> FlatAttachments { get; set; }

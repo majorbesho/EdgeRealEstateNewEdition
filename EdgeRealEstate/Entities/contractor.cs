@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -18,17 +19,20 @@ namespace EdgeRealEstate.Entities
         }
         public int Id { get; set; }
         [Required(ErrorMessage = "يجب ادخال اسم")]
+        [DisplayName("الاسم")]
         public string ARName { get; set; }
-
+        [DisplayName("الاسم")]
         public string ENName { get; set; }
         [Required(ErrorMessage = " يجب اختيار النوع")]
+        [DisplayName("النوع")]
         public bool Type { get; set; }
-
+        [DisplayName("هل نشط؟")]
         public bool isActive { get; set; }
-
+        [DisplayName("مندوب المبيعات")]
         public int salesManID { get; set; }
         [ForeignKey("LKAccount")]
         [Required(ErrorMessage = " يجب اختيار حساب")]
+        
         public int AccountId { get; set; }
         public string managerName { get; set; }
         [Required(ErrorMessage = " يجب اختيار دولة")]

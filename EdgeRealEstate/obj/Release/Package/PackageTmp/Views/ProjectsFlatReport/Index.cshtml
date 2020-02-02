@@ -45,8 +45,8 @@
     </div>
 }
 
-<table id="labsTypesTable" class="data table table-striped no-margin" dir="rtl">
-    <thead>
+<table @*id="labsTypesTable*@" class="data table table-striped no-margin" dir="rtl">
+    <thead style="background-color:#ccc; text-align-last:center" dir="rtl" >
         <tr>
             <th>المشروع</th>
             <th>تاريخ البدأ </th>
@@ -58,7 +58,7 @@
             <th>مباع</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody style="text-align-last:center">
         @foreach (var item in Model)
         {
         <tr>
@@ -73,7 +73,7 @@
         </tr>
         }
     </tbody>
-    <tfoot>
+    <tfoot style="text-align-last: center">
         <tr>
             <td colspan="3"> الاجمالي</td>
             
@@ -85,89 +85,5 @@
         </tr>
     </tfoot>
 </table>
-@*@if (!Model.Any())
-    {
-        <script type="text/javascript">
-            alert("Model empty");
-            $('#labsTypesTable').hide();
-        </script>
-    }*@
-@section scripts{
-    <script>
-        $(document).ready(function () {
-            $('#labsTypesTable').DataTable();
-        });
-    </script>
-}
 
-@*<table class="table">
-<tr>
-    <th>
-        @Html.DisplayNameFor(model => model.ProjectID)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.ProjectName)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.BeginDateAcutely)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.EndDateAcutely)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.TotalFlatNO)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.UnderpreparingFlat)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.BookedFlat)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.SoledFlat)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.ReadyFlat)
-    </th>
-    <th></th>
-</tr>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BeginDateAcutely)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDateAcutely)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalFlatNO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnderpreparingFlat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BookedFlat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoledFlat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReadyFlat)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.id })
-        </td>
-    </tr>
-}
-
-</table>*@
